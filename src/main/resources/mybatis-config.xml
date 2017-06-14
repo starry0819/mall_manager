@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration SYSTEM "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<typeAliases>
+	
+		<typeAlias type="com.atguigu.bean.T_mall_class_1" alias="t_mall_class_1" />
+		<typeAlias type="com.atguigu.bean.T_mall_class_2" alias="t_mall_class_2" />
+		<typeAlias type="com.atguigu.bean.T_mall_trade_mark" alias="t_mall_trade_mark" />
+		<typeAlias type="com.atguigu.bean.T_mall_product" alias="t_mall_product" />
+		<typeAlias type="com.atguigu.bean.MyT_mall_attr" alias="MyT_mall_attr" />
+		<typeAlias type="com.atguigu.bean.T_mall_value" alias="T_mall_value" />
+		<typeAlias type="com.atguigu.bean.MyT_mall_attr_List" alias="MyT_mall_attr_List" />
+	</typeAliases>
+
+	<!-- <mappers> -->
+	<!-- <package name="com.atguigu.mapper" /> -->
+	<!-- </mappers> -->
+</configuration>

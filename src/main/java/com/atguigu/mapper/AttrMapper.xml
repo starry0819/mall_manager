@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.mapper.AttrMapper">
+	
+	<insert id="insertAttr" useGeneratedKeys="true" keyProperty="id">
+		insert into t_mall_attr(
+			shxm_mch,
+			flbh2
+		)values(
+			#{shxm_mch},
+			#{flbh2}
+		)
+	</insert>
+	
+	<insert id="insertAttrValue">
+		insert into t_mall_value(
+			shxzh,
+			shxm_id,
+			shxzh_mch
+		)values
+		<foreach collection="attrvalues" item="attrvalue" separator=",">
+			(#{attrvalue.shxzh}, #{shxm_id}, #{attrvalue.shxzh_mch})
+		</foreach>
+	</insert>
+
+	<select id="queryAttrlistByclass2" resultMap="MyT_mall_attr" >
+		select a.*, v.*, a.id as attrid, v.id as valueid from t_mall_attr a, t_mall_value v
+		where a.id = v.shxm_id and a.flbh2 = #{class2id}
+	</select>
+	
+	<resultMap type="MyT_mall_attr" id="MyT_mall_attr" autoMapping="true">
+		<id property="id" column="attrid" />
+		<collection property="valueList" ofType="T_mall_value" autoMapping="true">
+			<id property="id" column="valueid" />
+		</collection>
+	</resultMap>
+</mapper>

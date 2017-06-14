@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.mapper.SearchRedisMapper">
+	<select id="querySkuByclass2" resultMap="skumap">
+		SELECT
+		sku.*,spu.*,trade.*,trade.id as tradeId,spu.id as spuId,sku.id as skuId
+		FROM t_mall_sku
+		sku
+		LEFT JOIN t_mall_product spu ON sku.shp_id = spu.Id
+		LEFT JOIN t_mall_class_2 class2 ON spu.flbh2 = class2.Id
+		LEFT JOIN t_mall_trade_mark trade ON trade.Id = spu.pp_id
+		WHERE class2.Id = #{class2id}
+		${order}
+	</select>
+
+	<select id="querySkuByclass2AndAttr" resultMap="skumap">
+		SELECT
+		sku.*,spu.*,trade.*,trade.id as tradeId,spu.id as spuId,sku.id as skuId
+		FROM t_mall_sku
+		sku
+		LEFT JOIN t_mall_product spu ON sku.shp_id = spu.Id
+		LEFT JOIN t_mall_class_2 class2 ON spu.flbh2 = class2.Id
+		LEFT JOIN t_mall_trade_mark trade ON trade.Id = spu.pp_id
+		WHERE class2.Id = #{class2id}
+		${sql}
+		${order}
+	</select>
+
+	<resultMap type="com.atguigu.bean.MyT_mall_sku" id="skumap"
+		autoMapping="true">
+		<result property="id" column="skuId" />
+		<association property="spu" javaType="com.atguigu.bean.T_mall_product"
+			autoMapping="true">
+			<result property="id" column="spuId" />
+		</association>
+		<association property="trademark" javaType="com.atguigu.bean.T_mall_trade_mark"
+			autoMapping="true">
+			<result property="id" column="tradeId" />
+		</association>
+	</resultMap>
+	
+	<select id="queryAttrvalueByAttrid" resultType="com.atguigu.bean.T_mall_value">
+		select * from t_mall_value where shxm_id = #{attrId}
+	</select>
+</mapper>
