@@ -19,8 +19,8 @@
 	
 	function sku_class2OptionByclass1(class1id) {
 		// 当一级分类选择变化时，清空二级分类和品牌的下拉列表内容，并新增请选择的下拉
-		$("#sku_class2_select").empty().append("<option>请选择</option>");
-		$("#sku_trademark_select").empty().append("<option>请选择</option>");
+		$("#sku_class2_select").empty().append("<option value='0'>请选择</option>");
+		$("#sku_trademark_select").empty().append("<option value='0'>请选择</option>");
 		
 		// 根据一级分类的id获取二级分类的json数据并遍历添加至二级分类的select中
 		$.getJSON("js/json/class_2_"+class1id+".js", function(data) {
@@ -62,7 +62,7 @@
 	<form action="addSku.do" method="post">
 		一级分类<br/>
 		<select id="sku_class1_select" style="width:80px" onchange="sku_class2OptionByclass1(this.value)">
-			<option>请选择</option>
+			<option value="0">请选择</option>
 		</select><br/><br/>
 		二级分类<br/>
 		<select id="sku_class2_select" style="width:80px" onchange="sku_attrQueryByclass2(this.value)">
