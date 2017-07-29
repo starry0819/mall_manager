@@ -41,7 +41,7 @@
 					    				return d.toLocaleString();
 					    			}	
 					            },  
-					            {field:'list_value',title:'属性值',width:200,
+					            {field:'valueList',title:'属性值',width:200,
 					            	formatter: function(value,row,index){
 					            		// alert(row);
 					            		// {"shxzh":"ssfd"}

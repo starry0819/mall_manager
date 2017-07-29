@@ -28,7 +28,7 @@ public class SpuController {
 	private TestMapperService testMapperService;
 
 	@RequestMapping(value = "spu_publish", method = RequestMethod.POST)
-	public String spuPublish(T_mall_product product, @RequestParam("files") MultipartFile[] multipartFiles) {
+	public String spuPublish(T_mall_product product, @RequestParam(value="files",required=false) MultipartFile[] multipartFiles) {
 		List<String> imgNames = MyUploadUtil.getProductImageNames(multipartFiles);
 		// 将第一张图片作为该product的头图
 		product.setShp_tp(imgNames.get(0));

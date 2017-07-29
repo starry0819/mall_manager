@@ -41,7 +41,7 @@
 		var pp_id = $("#sku_trademark_select").val();
 		var class1id = $("#sku_class1_select").val();
 		var class2id = $("#sku_class2_select").val();
-		$("#sku_spu_select").empty().append("<option>请选择</option>");
+		$("#sku_spu_select").empty().append("<option value='0'>请选择</option>");
 		$.post("get_spuByppid_class2id_class1id.do",{"flbh2":class2id,"flbh1":class1id,"pp_id":pp_id},function(data){
 			$.each(data, function(i, item) {
 				$("#sku_spu_select").append("<option value="+item.id+">"+item.shp_mch+"</option>");
@@ -74,7 +74,7 @@
 		</select><br/><br/>
 		商品信息<br/>
 		<select name="shp_id" id="sku_spu_select" >
-			<option>请选择</option>
+			<option value="0">请选择</option>
 		</select><br/><br/>
 		<div id="sku_showAttr_div"></div>
 	</form>
